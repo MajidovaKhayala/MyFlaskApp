@@ -180,5 +180,3 @@ def poct():
 def radiospektr():
     return render_template_string(radiospektr_html)
 
-if __name__ == '__main__':
-    app.run(debug=True)
