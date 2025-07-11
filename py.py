@@ -1,9 +1,6 @@
  # D:\MyFieldofWork\PYTHON\py.py   
 
 from flask import Flask, render_template_string
-from flask import Flask
-
-app = Flask(__name__)
 
 index_html = """
 <!DOCTYPE html>
@@ -182,6 +179,7 @@ def radiospektr():
     return render_template_string(radiospektr_html)
  
 
+from flask import Flask
 
 app = Flask(__name__)
 
@@ -192,5 +190,3 @@ def home():
 # Aşağıdakı sətri SİLİN (Render üçün lazım deyil)
 # if __name__ == '__main__':
 #     app.run()
-# if __name__ == '__main__':
-#     app.run(debug=True)
