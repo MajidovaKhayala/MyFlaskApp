@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+  <meta charset="UTF-8">
+  <title>İKTA Məlumat Bankı</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  <div class="sidebar" id="sidebar">
+    <div class="header-logo">
+      <img src="{{ url_for('static', filename='images/IKTALOGOAG.png') }}" alt="Logo" id="logo-full" />
+      <img src="{{ url_for('static', filename='images/simvol-white.png') }}" alt="Logo" id="logo-mini" />
+    </div>
+    <button class="toggle-btn" onclick="toggleSidebar()">
+      <span class="menu-icon">☰</span>
+    </button>
+    <a href="/general" target="contentFrame">
+      <i class="bi bi-speedometer2 menu-icon"></i>
+      <span class="menu-text">Ümumi</span>
+    </a>    
+    <a href="/telekom" target="contentFrame">
+      <i class="bi bi-wifi menu-icon"></i>
+      <span class="menu-text">Telekom</span>
+    </a>
+    <a href="/poct" target="contentFrame">
+      <i class="bi bi-envelope menu-icon"></i>
+      <span class="menu-text">Poçt</span>
+    </a>
+    <a href="/radiospektr" target="contentFrame">
+      <i class="bi bi-broadcast menu-icon"></i>
+      <span class="menu-text">Radiospektr</span>
+    </a>
+  </div>
+
+  <div class="content">
+    {% block content %}{% endblock %}
+  </div>
+
+  <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
