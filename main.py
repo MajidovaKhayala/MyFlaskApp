@@ -135,7 +135,6 @@ index_html = """
     </div>
     <button class="toggle-btn" onclick="toggleSidebar()">
       <span class="menu-icon">☰</span>
-      <span class="menu-text">Gizlət</span>
     </button>
     <a href="/general" target="contentFrame">
       <i class="bi bi-speedometer2 menu-icon"></i>
