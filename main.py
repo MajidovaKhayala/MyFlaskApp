@@ -1,5 +1,3 @@
- # D:\MyFieldofWork\PYTHON\py.py   
-
 from flask import Flask, render_template_string
 
 app = Flask(__name__)
@@ -10,6 +8,7 @@ index_html = """
 <head>
   <meta charset="UTF-8">
   <title>Monitorinq Paneli</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css" rel="stylesheet">
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
@@ -33,20 +32,31 @@ index_html = """
       width: 60px;
     }
 
-    .sidebar.collapsed a {
-      text-align: center;
-      font-size: 12px;
-    }
-
     .sidebar a {
       padding: 15px;
       text-decoration: none;
       color: white;
       transition: background 0.3s;
+      display: flex;
+      align-items: center;
+      white-space: nowrap;
     }
 
     .sidebar a:hover {
       background-color: #34495e;
+    }
+
+    .sidebar.collapsed a {
+      justify-content: center;
+    }
+
+    .menu-text {
+      margin-left: 10px;
+      transition: opacity 0.3s;
+    }
+
+    .sidebar.collapsed .menu-text {
+      display: none;
     }
 
     /* Toggle button */
@@ -58,6 +68,13 @@ index_html = """
       cursor: pointer;
       font-size: 16px;
       text-align: right;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+    }
+
+    .sidebar.collapsed .toggle-btn {
+      justify-content: center;
     }
 
     .header-logo {
@@ -65,22 +82,31 @@ index_html = """
       display: flex;
       justify-content: center;
       align-items: center;
+      height: 60px;
     }
 
     .header-logo img#logo-full {
       width: 180px;
-      transition: width 0.3s;
+      transition: all 0.3s;
     }
     
     .header-logo img#logo-mini {
       width: 40px;
-      transition: width 0.3s;
+      transition: all 0.3s;
+      display: none;
     }
 
     .sidebar.collapsed .header-logo {
       justify-content: center;
-      align-items: center;
       padding: 10px 0;
+    }
+
+    .sidebar.collapsed #logo-full {
+      display: none;
+    }
+
+    .sidebar.collapsed #logo-mini {
+      display: block;
     }
 
     .content {
@@ -92,6 +118,12 @@ index_html = """
       height: 100%;
       border: none;
     }
+
+    .menu-icon {
+      font-size: 1.2em;
+      min-width: 20px;
+      text-align: center;
+    }
   </style>
 </head>
 <body>
@@ -99,46 +131,53 @@ index_html = """
   <div class="sidebar" id="sidebar">
     <div class="header-logo">
       <img src="/static/IKTALOGOAG.png" alt="Logo" id="logo-full" />
-      <img src="/static/simvol-white.png" alt="Logo" id="logo-mini" style="display: none;" />
+      <img src="/static/simvol-white.png" alt="Logo" id="logo-mini" />
     </div>
-    <button class="toggle-btn" onclick="toggleSidebar()">☰ </button>
-    <a href="/general" target="contentFrame">1. Ümumi</a>    
-    <a href="/telekom" target="contentFrame">1. Telekom</a>
-    <a href="/poct" target="contentFrame">2. Poçt</a>
-    <a href="/radiospektr" target="contentFrame">3. Radiospektr</a>
+    <button class="toggle-btn" onclick="toggleSidebar()">
+      <span class="menu-icon">☰</span>
+      <span class="menu-text">Gizlət</span>
+    </button>
+    <a href="/general" target="contentFrame">
+      <i class="bi bi-speedometer2 menu-icon"></i>
+      <span class="menu-text">Ümumi</span>
+    </a>    
+    <a href="/telekom" target="contentFrame">
+      <i class="bi bi-wifi menu-icon"></i>
+      <span class="menu-text">Telekom</span>
+    </a>
+    <a href="/poct" target="contentFrame">
+      <i class="bi bi-envelope menu-icon"></i>
+      <span class="menu-text">Poçt</span>
+    </a>
+    <a href="/radiospektr" target="contentFrame">
+      <i class="bi bi-broadcast menu-icon"></i>
+      <span class="menu-text">Radiospektr</span>
+    </a>
   </div>
 
   <div class="content">
     <iframe name="contentFrame" src="/general"></iframe>
   </div>
 
-    <script>
-      function toggleSidebar() {
-        const sidebar = document.getElementById('sidebar');
-        const fullLogo = document.getElementById('logo-full');
-        const miniLogo = document.getElementById('logo-mini');
-    
-        sidebar.classList.toggle('collapsed');
-    
-        const collapsed = sidebar.classList.contains('collapsed');
-    
-        if (collapsed) {
-          fullLogo.style.display = 'none';
-          miniLogo.style.display = 'block';
-        } else {
-          fullLogo.style.display = 'block';
-          miniLogo.style.display = 'none';
-        }
+  <script>
+    function toggleSidebar() {
+      const sidebar = document.getElementById('sidebar');
+      const toggleBtn = document.querySelector('.toggle-btn .menu-text');
+      
+      sidebar.classList.toggle('collapsed');
+      
+      if (sidebar.classList.contains('collapsed')) {
+        toggleBtn.textContent = 'Göstər';
+      } else {
+        toggleBtn.textContent = 'Gizlət';
       }
-    </script>
-
-
+    }
+  </script>
 </body>
 </html>
 """
 
 # Məzmun səhifələri
-
 general_html = """
 <h1>Ümumi Bölmə</h1>
 <p>İKTA fəaliyətlərinə dair məlumatlar burada göstərilir.</p>
