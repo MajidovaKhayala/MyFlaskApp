@@ -4,7 +4,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    return render_template('base.html', iframe_src="/general")
+    return render_template('base.html', iframe_src=url_for('general'))
 
 @app.route('/general')
 def general():
