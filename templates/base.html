@@ -1,22 +1,28 @@
-<!-- templates/base.html -->
 <!DOCTYPE html>
 <html lang="az">
 <head>
-    <meta charset="UTF-8">
-    <title>{% block title %}My App{% endblock %}</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <meta charset="UTF-8">
+  <title>Monitorinq Paneli</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <div class="sidebar">
-        <!-- Bu menyu sabit qalacaq -->
-        <ul>
-            <li><a href="/">Əsas</a></li>
-            <li><a href="/dashboard">Panel</a></li>
-            <li><a href="/about">Haqqında</a></li>
-        </ul>
+
+  <div class="sidebar" id="sidebar">
+    <div class="header-logo">
+      <img src="{{ url_for('static', filename='IKTALOGOAG.png') }}" alt="Logo" id="logo-full" />
+      <img src="{{ url_for('static', filename='simvol-white.png') }}" alt="Logo" id="logo-mini" style="display: none;" />
     </div>
-    <div class="main-content">
-        {% block content %}{% endblock %}
-    </div>
+    <button class="toggle-btn" onclick="toggleSidebar()">☰ </button>
+    <a href="{{ url_for('general') }}" target="contentFrame">1. Ümumi</a>    
+    <a href="{{ url_for('telekom') }}" target="contentFrame">1. Telekom</a>
+    <a href="{{ url_for('poct') }}" target="contentFrame">2. Poçt</a>
+    <a href="{{ url_for('radiospektr') }}" target="contentFrame">3. Radiospektr</a>
+  </div>
+
+  <div class="content">
+    <iframe name="contentFrame" src="{{ iframe_src }}"></iframe>
+  </div>
+
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>
