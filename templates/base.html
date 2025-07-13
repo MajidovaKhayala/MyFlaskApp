@@ -6,14 +6,13 @@
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
-
   <div class="sidebar" id="sidebar">
     <div class="header-logo">
-      <img src="{{ url_for('static', filename='images/IKTALOGOAG.png') }}" alt="Logo" id="logo-full" />
-      <img src="{{ url_for('static', filename='images/simvol-white.png') }}" alt="Logo" id="logo-mini" style="display: none;" />
+      <img src="{{ url_for('static', filename='IKTALOGOAG.png') }}" id="logo-full" alt="Logo">
+      <img src="{{ url_for('static', filename='simvol-white.png') }}" id="logo-mini" alt="Logo" style="display:none;">
     </div>
-    <button class="toggle-btn" onclick="toggleSidebar()">☰ </button>
-    <a href="{{ url_for('general') }}" target="contentFrame">1. Ümumi</a>    
+    <button class="toggle-btn" onclick="toggleSidebar()">☰</button>
+    <a href="{{ url_for('general') }}" target="contentFrame">1. Ümumi</a>
     <a href="{{ url_for('telekom') }}" target="contentFrame">1. Telekom</a>
     <a href="{{ url_for('poct') }}" target="contentFrame">2. Poçt</a>
     <a href="{{ url_for('radiospektr') }}" target="contentFrame">3. Radiospektr</a>
@@ -22,6 +21,7 @@
   <div class="content">
     <iframe name="contentFrame" src="{{ iframe_src }}"></iframe>
   </div>
+
   <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 </body>
 </html>
