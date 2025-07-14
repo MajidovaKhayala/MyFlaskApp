@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+  <meta charset="UTF-8">
+  <title>Monitorinq Paneli</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <div class="sidebar" id="sidebar">
+    <div class="header-logo">
+      <img src="{{ url_for('static', filename='images/IKTALOGOAG.png') }}" id="logo-full" alt="Logo">
+      <img src="{{ url_for('static', filename='images/simvol-white.png') }}" id="logo-mini" alt="Logo" style="display:none;">
+    </div>
+    <button class="toggle-btn" onclick="toggleSidebar()">☰</button>
+          <a href="{{ url_for('general') }}" target="contentFrame">
+            <i class="fas fa-chart-bar"></i>
+            <span class="menu-text">Ümumi</span>
+          </a>
+          <a href="{{ url_for('telekom') }}" target="contentFrame">
+            <i class="fas fa-phone"></i>
+            <span class="menu-text">Telekom</span>
+          </a>
+          <a href="{{ url_for('poct') }}" target="contentFrame">
+            <i class="fas fa-envelope"></i>
+            <span class="menu-text">Poçt</span>
+          </a>
+          <a href="{{ url_for('radiospektr') }}" target="contentFrame">
+            <i class="fas fa-broadcast-tower"></i>
+            <span class="menu-text">Radiospektr</span>
+          </a>
+  </div>
+  <div class="content">
+    <iframe name="contentFrame" src="{{ iframe_src }}"></iframe>
+  </div>
+
+  <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</script>
+  
+</body>
+</html>
